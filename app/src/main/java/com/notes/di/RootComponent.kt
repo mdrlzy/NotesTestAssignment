@@ -1,5 +1,7 @@
 package com.notes.di
 
+import com.notes.ui.details.NoteDetailsFragment
+import com.notes.ui.list.NoteListFragment
 import com.notes.ui.list.NoteListViewModel
 import dagger.Component
 
@@ -20,6 +22,7 @@ interface RootComponent {
         ): RootComponent
     }
 
-    fun getNoteListViewModel(): NoteListViewModel
+    fun inject(noteDetailsFragment: NoteDetailsFragment)
+    fun inject(noteListFragment: NoteListFragment)
 
 }
