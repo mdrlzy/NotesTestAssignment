@@ -16,13 +16,15 @@ class RootActivity : AppCompatActivity(), FragmentNavigator {
         val viewBinding = ActivityRootBinding.inflate(layoutInflater)
         this.viewBinding = viewBinding
         setContentView(viewBinding.root)
-        supportFragmentManager
-            .beginTransaction()
-            .add(
-                viewBinding.container.id,
-                NoteListFragment()
-            )
-            .commit()
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .add(
+                    viewBinding.container.id,
+                    NoteListFragment()
+                )
+                .commit()
+        }
     }
 
     override fun navigateTo(
@@ -35,6 +37,7 @@ class RootActivity : AppCompatActivity(), FragmentNavigator {
                 viewBinding.container.id,
                 fragment
             )
+            .addToBackStack(null)
             .commit()
     }
 
